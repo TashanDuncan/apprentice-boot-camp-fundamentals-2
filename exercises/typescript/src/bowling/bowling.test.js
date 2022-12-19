@@ -45,6 +45,17 @@ describe('Bowling tests', () => {
     expect(bowlingGame.score(rolls)).toBe(27)
   })
 
+  test('can handle consecutive strikes', () => {
+    //arrange
+    const bowlingGame = new BowlingGame()
+
+    //act
+    const rolls = [10,0, 10,0, 1,1, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0,]
+
+    //assert
+    expect(bowlingGame.score(rolls)).toBe(35)
+  })
+
   test('return true if frame is equal to 10', () => {
     //arrange
     const bowlingGame = new BowlingGame()
