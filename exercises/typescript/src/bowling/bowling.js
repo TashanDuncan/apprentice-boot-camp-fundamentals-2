@@ -8,6 +8,15 @@ class BowlingGame {
       initialValue
     )
   }
+
+  isSpare(frame) {
+    if(frame[0] + frame[1] === 10) {
+      return true
+    } else {
+      return false
+    }
+
+  }
 }
 
 module.exports = {

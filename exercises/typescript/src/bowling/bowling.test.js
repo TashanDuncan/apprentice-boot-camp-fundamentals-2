@@ -22,4 +22,15 @@ describe('Bowling tests', () => {
     //assert
     expect(bowlingGame.bowl(rolls)).toBe(20)
   })
+
+  test('return true if frame is equal to 10', () => {
+    //arrange
+    const bowlingGame = new BowlingGame()
+
+    //act
+
+    //assert
+    expect(bowlingGame.isSpare([4,6])).toBe(true)
+    expect(bowlingGame.isSpare([2,6])).toBe(false)
+  })
 })
