@@ -68,4 +68,15 @@ describe('Bowling tests', () => {
     expect(bowlingGame.isStrike([10,0])).toBe(true)
     expect(bowlingGame.isStrike([10,5])).toBe(true)
   })
+
+  test('adds sum of next frame after strike', () => {
+    //arrange
+    const bowlingGame = new BowlingGame()
+
+    //act
+    const rolls = [10,0, 1,1, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0,]
+
+    //assert
+    expect(bowlingGame.score(rolls)).toBe(14)
+  })
 })
