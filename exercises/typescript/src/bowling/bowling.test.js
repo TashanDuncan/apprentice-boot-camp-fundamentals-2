@@ -9,7 +9,7 @@ describe('Bowling tests', () => {
     const rolls = [0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0,]
 
     //assert
-    expect(bowlingGame.bowl(rolls)).toBe(0)
+    expect(bowlingGame.score(rolls)).toBe(0)
   })
 
   test('when all rolls are 1 return 20', () => {
@@ -20,7 +20,29 @@ describe('Bowling tests', () => {
     const rolls = [1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1,]
 
     //assert
-    expect(bowlingGame.bowl(rolls)).toBe(20)
+    expect(bowlingGame.score(rolls)).toBe(20)
+  })
+
+  test('add score from next frame if first frame is spare', () => {
+    //arrange
+    const bowlingGame = new BowlingGame()
+
+    //act
+    const rolls = [5,5, 1,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0,]
+
+    //assert
+    expect(bowlingGame.score(rolls)).toBe(12)
+  })
+
+  test('can handle consecutive spares', () => {
+    //arrange
+    const bowlingGame = new BowlingGame()
+
+    //act
+    const rolls = [5,5, 5,5, 1,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0,]
+
+    //assert
+    expect(bowlingGame.score(rolls)).toBe(27)
   })
 
   test('return true if frame is equal to 10', () => {
