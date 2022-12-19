@@ -101,4 +101,15 @@ describe('Bowling tests', () => {
     //assert
     expect(bowlingGame.score(rolls)).toBe(300)
   })
+
+  test('all spares', () => {
+    //arrange
+    const bowlingGame = new BowlingGame()
+
+    //act
+    const rolls = [5,5, 5,5, 5,5, 5,5, 5,5, 5,5, 5,5, 5,5, 5,5, 5,5, 5]
+
+    //assert
+    expect(bowlingGame.score(rolls)).toBe(150)
+  })
 })
