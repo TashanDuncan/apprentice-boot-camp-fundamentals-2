@@ -2,7 +2,11 @@
 class BowlingGame {
 
   bowl(rolls) {
-    return 0
+    const initialValue = 0
+    return rolls.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      initialValue
+    )
   }
 }
 
