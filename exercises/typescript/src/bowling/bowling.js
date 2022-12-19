@@ -15,9 +15,18 @@ class BowlingGame {
     } else {
       return false
     }
-
   }
+
+  isStrike(frame) {
+    if(frame[0] === 10) {
+      return true
+    } else {
+      return false
+    }
+  }
+
 }
+
 
 module.exports = {
   BowlingGame

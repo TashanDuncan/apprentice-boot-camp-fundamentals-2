@@ -33,4 +33,17 @@ describe('Bowling tests', () => {
     expect(bowlingGame.isSpare([4,6])).toBe(true)
     expect(bowlingGame.isSpare([2,6])).toBe(false)
   })
+
+  test('return true if first roll in frame is equal to 10', () => {
+    //arrange
+    const bowlingGame = new BowlingGame()
+
+    //act
+
+    //assert
+    expect(bowlingGame.isStrike([4,6])).toBe(false)
+    expect(bowlingGame.isStrike([2,6])).toBe(false)
+    expect(bowlingGame.isStrike([10,0])).toBe(true)
+    expect(bowlingGame.isStrike([10,5])).toBe(true)
+  })
 })
