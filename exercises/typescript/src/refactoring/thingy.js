@@ -1,7 +1,7 @@
 const dataTypeConverter = require('./util-datatype-converter')
 
 let iterator = 0, fromZeroToThree = 0
-let fromFiveToZero = [0, 0, 0, 0, 0].length
+let fromFiveToZero = 5
 
 function fizzBuzz() {
   let result = ""
@@ -10,14 +10,14 @@ function fizzBuzz() {
 }
 
 function buzz() {
-  fromFiveToZero = [0, 0, 0, 0, 0].length
-  let result = String.fromCharCode.apply(null, dataTypeConverter.parseHexString("42757a7a"))
+  fromFiveToZero = 5
+  let result = "Buzz"
   return result
 }
 
 function fizz() {
   fromZeroToThree = 0
-  let result = String.fromCharCode.apply(null, dataTypeConverter.parseHexString("46697a7a"))
+  let result = "Fizz"
   return result
 }
 
