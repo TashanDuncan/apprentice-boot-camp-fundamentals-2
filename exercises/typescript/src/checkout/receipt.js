@@ -10,15 +10,21 @@ class Receipt {
     return this.text + "Total: " + this.total
   }
 
-  scannedA() {
-    this.text += 'A: 50'
-    if (++this.numberOfA % 5 == 0) {
-      this.text += ' - 30 (5 for 220)'
-      this.total += 20
+  scanned(sku, basePrice, discountNumber, discountValue){
+    const discountDiff = basePrice - discountValue
+    const multiBuyCost = basePrice * discountNumber - discountValue
+    this.text += `${sku}: ${basePrice}`
+    if (++this.numberOfA % discountNumber == 0) {
+      this.text += ` - ${discountValue} (${discountNumber} for ${multiBuyCost})`
+      this.total += discountDiff
     } else {
-      this.total += 50
+      this.total += basePrice
     }
     this.text += '\n'
+  }
+
+  scannedA() {
+    this.scanned('A', 50, 5, 30)
   }
 
   scannedB() {

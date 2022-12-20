@@ -5,6 +5,7 @@ class Checkout {
     this.total = 0
     this.numberOfA = 0
     this.numberOfB = 0
+    this.numberOfC = 0
     this.receipt = new Receipt()
   }
 
