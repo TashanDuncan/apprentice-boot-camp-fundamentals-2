@@ -4,17 +4,19 @@ class Receipt {
     this.numberOfA = 0
     this.numberOfB = 0
     this.total = 0
+    this.numberOfSku = new Map([['A', 0],['B', 0],['C', 0],['D', 0]])
   }
 
   getText() {
     return this.text + "Total: " + this.total
   }
 
-  scanned(sku, basePrice, discountNumber, discountValue){
+  scanned(sku, basePrice, discountNumber = undefined, discountValue = undefined){
+    this.numberOfSku.set(sku, this.numberOfSku.get(sku) + 1)
     const discountDiff = basePrice - discountValue
     const multiBuyCost = basePrice * discountNumber - discountValue
     this.text += `${sku}: ${basePrice}`
-    if (++this.numberOfA % discountNumber == 0) {
+    if (this.numberOfSku.get(sku) % discountNumber == 0 && discountNumber && discountValue) {
       this.text += ` - ${discountValue} (${discountNumber} for ${multiBuyCost})`
       this.total += discountDiff
     } else {
@@ -28,24 +30,15 @@ class Receipt {
   }
 
   scannedB() {
-    this.text += 'B: 30'
-    if (++this.numberOfB % 2 == 0) {
-      this.text += ' - 15 (2 for 45)'
-      this.total += 15
-    } else {
-      this.total += 30
-    }
-    this.text += '\n'
+    this.scanned('B', 30, 2, 15)
   }
 
   scannedC() {
-    this.text += 'C: 20\n'
-    this.total += 20
+    this.scanned('C', 20)
   }
 
   scannedD() {
-    this.text += 'D: 15\n'
-    this.total += 15
+    this.scanned('D', 15)
   }
 }
 
