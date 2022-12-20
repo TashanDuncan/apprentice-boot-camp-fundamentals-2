@@ -2,6 +2,8 @@ const dataTypeConverter = require('./util-datatype-converter')
 
 let iterator = 0, fromZeroToThree = 0
 let fromFiveToZero = 5
+const FIZZ = decodeString('46697a7a')
+const BUZZ = decodeString('42757a7a')
 
 function fizzBuzz() {
   let result = ""
@@ -11,26 +13,40 @@ function fizzBuzz() {
 
 function buzz() {
   fromFiveToZero = 5
-  return "Buzz"
+  return BUZZ
 }
 
 function fizz() {
   fromZeroToThree = 0
-  return "Fizz"
+  return FIZZ
+}
+
+function iterateCounters() {
+  fromZeroToThree++
+  fromFiveToZero--
+}
+
+function decodeString(hex) {
+  return String.fromCharCode.apply(null, dataTypeConverter.parseHexString(hex))
 }
 
 function fizzBuzzChecker(index) {
-
-  fromZeroToThree++
-  fromFiveToZero--
+  iterateCounters()
   const isMultipleOf3 = fromZeroToThree == 3
   const isMultipleOf5 = fromFiveToZero == 0
   let number = index + 1
 
   let result = isMultipleOf3 || isMultipleOf5 ? "" : number
-  if (isMultipleOf3) result += fizz()
-  if (isMultipleOf5) result += buzz()
+  result = checker(isMultipleOf3, fizz,result)
+  result = checker(isMultipleOf5, buzz,result)
   return result
 }
 
 module.exports.fizzBuzz = fizzBuzz
+
+function checker(bool, callback, result){
+  if(bool){
+    result += callback()
+  }
+  return result
+}
