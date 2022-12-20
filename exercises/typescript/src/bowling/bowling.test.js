@@ -50,7 +50,7 @@ describe('Bowling tests', () => {
     const bowlingGame = new BowlingGame()
 
     //act
-    const rolls = [10,0, 10,0, 1,1, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0,]
+    const rolls = [10, 10, 1,1, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0,]
 
     //assert
     expect(bowlingGame.score(rolls)).toBe(35)
@@ -85,7 +85,7 @@ describe('Bowling tests', () => {
     const bowlingGame = new BowlingGame()
 
     //act
-    const rolls = [10,0, 1,1, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0,]
+    const rolls = [10, 1,1, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0,]
 
     //assert
     expect(bowlingGame.score(rolls)).toBe(14)

@@ -5,18 +5,14 @@ class BowlingGame {
     let total = 0
     let rollIndex = 0
     for (let frameIndex = 0; frameIndex < 10; frameIndex++) {
-      const frame = [rolls[rollIndex],rolls[rollIndex +1]]
+      const currentAndNextRoll = [rolls[rollIndex],rolls[rollIndex +1]]
+      total += currentAndNextRoll.reduce((accumulator, currentValue) => accumulator + currentValue,0)
 
-      total += frame.reduce((accumulator, currentValue) => accumulator + currentValue,0)
-
-      if(this.isStrike(frame)){
-        if(this.isStrike([rolls[rollIndex+2] + rolls[rollIndex+3]])){
-          total += (rolls[rollIndex+2] + rolls[rollIndex+4])
-        } else{
-          total += (rolls[rollIndex+2] + rolls[rollIndex+3])
-        }
+      if(this.isStrike(currentAndNextRoll)){
+        console.log(rolls[rollIndex + 2])
+        total += rolls[rollIndex + 2]
       }
-      else if(this.isSpare(frame)){
+      else if(this.isSpare(currentAndNextRoll)){
         total += rolls[rollIndex+2]
       }
 
