@@ -5,7 +5,7 @@ let fromFiveToZero = [0, 0, 0, 0, 0].length
 
 function fizzBuzz() {
   let result = ""
-  for (; iterator < 100; iterator++) result += b(iterator) + " "
+  for (; iterator < 100; iterator++) result += fizzBuzzChecker(iterator) + " "
   return result.substring(0, result.length - 1)
 }
 
@@ -21,11 +21,11 @@ function fizz() {
   return result
 }
 
-function b(foo) {
+function fizzBuzzChecker(goingUp) {
   fromZeroToThree++
   fromFiveToZero--
-  let result = fromZeroToThree == 0b11 || fromFiveToZero == 0 ? "" : foo + 1
-  if (fromZeroToThree == 0b11) result += fizz()
+  let result = fromZeroToThree == 3 || fromFiveToZero == 0 ? "" : goingUp + 1
+  if (fromZeroToThree == 3) result += fizz()
   if (fromFiveToZero == 0) result += buzz()
   return result
 }
