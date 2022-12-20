@@ -1,3 +1,16 @@
+class Product {
+  constructor(sku, basePrice, discountNumber = undefined, discountValue = undefined) {
+    this.sku = sku
+    this.basePrice = basePrice,
+    this.discountNumber = discountNumber,
+    this.discountValue = discountValue
+    this.discountDiff = this.basePrice - this.discountValue
+    this.multiBuyCost = this.basePrice * this.discountNumber - this.discountValue
+    this.baseOutput = `${this.sku}: ${this.basePrice}`
+    this.discountOutput = ` - ${this.discountValue} (${this.discountNumber} for ${this.multiBuyCost})`
+  }
+
+}
 class Receipt {
   constructor() {
     this.text = ''
@@ -11,34 +24,37 @@ class Receipt {
     return this.text + "Total: " + this.total
   }
 
-  scanned(sku, basePrice, discountNumber = undefined, discountValue = undefined){
-    this.numberOfSku.set(sku, this.numberOfSku.get(sku) + 1)
-    const discountDiff = basePrice - discountValue
-    const multiBuyCost = basePrice * discountNumber - discountValue
-    this.text += `${sku}: ${basePrice}`
-    if (this.numberOfSku.get(sku) % discountNumber == 0 && discountNumber && discountValue) {
-      this.text += ` - ${discountValue} (${discountNumber} for ${multiBuyCost})`
-      this.total += discountDiff
+  scanned(product){
+    this.numberOfSku.set(product.sku, this.numberOfSku.get(product.sku) + 1)
+    this.text += product.baseOutput
+    if (this.numberOfSku.get(product.sku) % product.discountNumber == 0 && product.discountNumber && product.discountValue) {
+      this.text += product.discountOutput
+      this.total += product.discountDiff
     } else {
-      this.total += basePrice
+      this.total += product.basePrice
     }
     this.text += '\n'
   }
 
   scannedA() {
-    this.scanned('A', 50, 5, 30)
+    const product = new Product('A', 50, 5, 30)
+    this.scanned(product)
   }
 
   scannedB() {
-    this.scanned('B', 30, 2, 15)
+    const product = new Product('B', 30, 2, 15)
+    this.scanned(product)
   }
 
   scannedC() {
-    this.scanned('C', 20)
+    const product = new Product('C', 20)
+    this.scanned(product)
   }
 
   scannedD() {
-    this.scanned('D', 15)
+    const product = new Product('D', 15)
+
+    this.scanned(product)
   }
 }
 
