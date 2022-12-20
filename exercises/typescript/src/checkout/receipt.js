@@ -12,9 +12,9 @@ class Receipt {
 
   scannedA() {
     this.text += 'A: 50'
-    if (++this.numberOfA % 3 == 0) {
-      this.text += ' - 20 (3 for 130)'
-      this.total += 30
+    if (++this.numberOfA % 5 == 0) {
+      this.text += ' - 30 (5 for 220)'
+      this.total += 20
     } else {
       this.total += 50
     }
