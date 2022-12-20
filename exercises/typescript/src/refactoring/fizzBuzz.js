@@ -11,22 +11,25 @@ function fizzBuzz() {
 
 function buzz() {
   fromFiveToZero = 5
-  let result = "Buzz"
-  return result
+  return "Buzz"
 }
 
 function fizz() {
   fromZeroToThree = 0
-  let result = "Fizz"
-  return result
+  return "Fizz"
 }
 
-function fizzBuzzChecker(goingUp) {
+function fizzBuzzChecker(index) {
+
   fromZeroToThree++
   fromFiveToZero--
-  let result = fromZeroToThree == 3 || fromFiveToZero == 0 ? "" : goingUp + 1
-  if (fromZeroToThree == 3) result += fizz()
-  if (fromFiveToZero == 0) result += buzz()
+  const isMultipleOf3 = fromZeroToThree == 3
+  const isMultipleOf5 = fromFiveToZero == 0
+  let number = index + 1
+
+  let result = isMultipleOf3 || isMultipleOf5 ? "" : number
+  if (isMultipleOf3) result += fizz()
+  if (isMultipleOf5) result += buzz()
   return result
 }
 

@@ -1,9 +1,9 @@
-const thingy = require('./thingy');
+const fizzBuzz = require('./fizzBuzz');
 const datatypeConverter = require('./util-datatype-converter');
 
 describe('Thingy test', () => {
   test('It works', () => {
-    expect(thingy.fizzBuzz() === String.fromCharCode.apply(null,
+    expect(fizzBuzz.fizzBuzz() === String.fromCharCode.apply(null,
       datatypeConverter.parseHexString("3120322046697a7a20342042757a7a2046697a7a203720382046697a7a2042757a7a203131" +
         "2046697a7a2031332031342046697a7a42757a7a2031362031372046697a7a2031392042757a7a204669" +
         "7a7a2032322032332046697a7a2042757a7a2032362046697a7a2032382032392046697a7a42757a7a20" +
